@@ -1,0 +1,104 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 1605914100,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I set list service api end point",
+            "match": {
+              "location": "step_definitions.Steps_Common.i_set_list_service_api_end_point()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2020-06-12T06:39:20.921Z",
+        "line": 7,
+        "name": "I should search the list",
+        "description": "",
+        "id": "verify-different-get-operation-using-rest-assured;i-should-search-the-list",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1173823700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I set request HEADER",
+            "match": {
+              "location": "step_definitions.Steps_Common.i_set_request_HEADER()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 3952301600,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "Send a GET http request",
+            "match": {
+              "location": "step_definitions.Steps_Common.send_a_GET_http_request()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 28117900,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I should receive valid response",
+            "match": {
+              "location": "step_definitions.Steps_Common.i_should_receive_valid_response()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2999000,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I should see \"49592\" in the list received",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"49592\"",
+                  "offset": 13
+                }
+              ],
+              "location": "step_definitions.Steps_Common.i_should_see_in_the_list_received(java.lang.String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Debug"
+          }
+        ]
+      }
+    ],
+    "name": "Verify different GET operation using Rest-Assured",
+    "description": "",
+    "id": "verify-different-get-operation-using-rest-assured",
+    "keyword": "Feature",
+    "uri": "file:src/cucumber/test/module-1/StoryID-ListFunctionalityTest.feature",
+    "tags": []
+  }
+]
