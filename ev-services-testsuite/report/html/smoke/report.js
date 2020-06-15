@@ -4,23 +4,8 @@ formatter.feature({
   "description": "",
   "keyword": "Feature"
 });
-formatter.background({
-  "name": "",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.step({
-  "name": "I set list service api end point",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "step_definitions.Steps_Common.i_set_list_service_api_end_point()"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.scenario({
-  "name": "I should search the list",
+  "name": "Perform POST request to create new list",
   "description": "",
   "keyword": "Scenario",
   "tags": [
@@ -30,41 +15,71 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "I set request HEADER",
+  "name": "I perform POST operation for \"/list\"",
   "keyword": "When "
 });
 formatter.match({
-  "location": "step_definitions.Steps_Common.i_set_request_HEADER()"
+  "location": "step_definitions.Steps_Common.i_perform_POST_operation_for(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Send a GET http request",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "step_definitions.Steps_Common.send_a_GET_http_request()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "I should receive valid response",
+  "name": "I should see status code \"201\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "step_definitions.Steps_Common.i_should_receive_valid_response()"
+  "location": "step_definitions.Steps_Common.i_should_see_status_code(java.lang.String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "I should see \"49592\" in the list received",
+  "name": "I should see message \"The item/record was created successfully.\" in the response body",
   "keyword": "And "
 });
 formatter.match({
-  "location": "step_definitions.Steps_Common.i_should_see_in_the_list_received(java.lang.String)"
+  "location": "step_definitions.Steps_Common.i_should_see_message_in_the_response_body(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Perform GET request on List",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@Debug"
+    }
+  ]
+});
+formatter.step({
+  "name": "I perform GET operation for \"/list\" with list id \"145550\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "step_definitions.Steps_Common.i_perform_GET_operation_for_with_list_id(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I should see status code \"200\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "step_definitions.Steps_Common.i_should_see_status_code(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I should see \"145550\" in the response body",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "step_definitions.Steps_Common.i_should_see_in_the_response_body(java.lang.String)"
 });
 formatter.result({
   "status": "passed"

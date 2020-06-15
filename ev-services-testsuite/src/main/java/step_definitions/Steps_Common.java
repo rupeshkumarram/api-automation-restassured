@@ -1,57 +1,45 @@
 package step_definitions;
 
-import static genericLib.GlobalVariable.*;
+import static genericLib.Utility.*;
 
-import io.cucumber.java.en.Given;
+import org.junit.Assert;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.equalTo;
+import io.restassured.path.json.JsonPath;
 
 
 public class Steps_Common {
+
+	 private static JsonPath jsonPathEvaluator;
 	 
-	 private static Response response;
-	 private static String jsonString;
-	 private static RequestSpecification request;	
-	
-	@Given("I set list service api end point")
-	public void i_set_list_service_api_end_point() {
-		RestAssured.baseURI = getBaseURI();
-	}
+	 @When("I perform POST operation for {string}")
+	 public void i_perform_POST_operation_for(String string) {
+		 performPostWithBodyParameter();
+	 }
 
-	@When("I set request HEADER")
-	public void i_set_request_HEADER() {
-		request = RestAssured.given()
-			    .header("Content-Type","application/json")
-				.queryParam("api_key", getAPIKey())
-	            .queryParam("page", "1")
-	 			.relaxedHTTPSValidation();
-	}
+	 @Then("I should see status code {string}")
+	 public void i_should_see_status_code(String statusCode) {
+		 Assert.assertEquals(statusCode, Integer.toString(response.getStatusCode()));
+		 System.out.println("Print status code: "+response.getStatusCode());
+	 }
 
-	@When("Send a GET http request")
-	public void send_a_GET_http_request() {
-		response = request.get("/list/49592");
-	}
+	 @Then("I should see message {string} in the response body")
+	 public void i_should_see_message_in_the_response_body(String errorMessage) {
+		 jsonPathEvaluator = response.jsonPath();
+		 Assert.assertEquals(errorMessage, jsonPathEvaluator.get("status_message"));
+		 System.out.println("Print response as string: "+jsonPathEvaluator.get("status_message"));
+	 }
+	 
+	 @When("I perform GET operation for {string} with list id {string}")
+	 public void i_perform_GET_operation_for_with_list_id(String string, String listID) {
+		 performGetwithListId(listID);
+	 }
 
-	@Then("I should receive valid response")
-	public void i_should_receive_valid_response() {
-	//	response.then().assertThat().statusCode(200);
-	//	assertThat(200, is(response.getStatusCode()));
-		jsonString = response.asString();
-		System.out.println(response.getStatusCode());
-		System.out.println("Print response as string: "+jsonString);
-	}
-
-	@Then("I should see {string} in the list received")
-	public void i_should_see_in_the_list_received(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	}
-	
+	 @Then("I should see {string} in the response body")
+	 public void i_should_see_in_the_response_body(String listID) {
+		 jsonPathEvaluator = response.jsonPath();
+		 Assert.assertEquals(listID, Integer.toString(jsonPathEvaluator.get("id")));
+		 System.out.println("Print response as string: "+jsonPathEvaluator.get("id"));
+	 }
 }

@@ -10,7 +10,7 @@ public class GlobalVariable {
 
 	public static String BaseURI = null;
 	public static String API_KEY = null;
-	public static String InputXML = null;
+	public static String Authorization = null;
 
 
 	//Initialize key variable from ini file
@@ -49,12 +49,13 @@ public class GlobalVariable {
 		return BaseURI;
 	}
 	public static String getAPIKey() {
-		API_KEY = readIniValue("API_KEY");
+		API_KEY = readIniValue("api_key");
 		return API_KEY;
 	}
-	public static String getInputXML() {
-		InputXML = readIniValue("XMLPath");
-		return InputXML;
+	
+	public static String getAuthorization() {
+		Authorization = readIniValue("authorization");
+		return Authorization;
 	}
 
 }
